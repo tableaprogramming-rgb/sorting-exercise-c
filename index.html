@@ -33,7 +33,7 @@
             font-weight: bold;
         }
         .console-error {
-            color: #ff5555; /* Red for emphasis */
+            color: #ff5555; /* Red for emphasis (final sorted elements) */
         }
     </style>
 </head>
@@ -41,7 +41,7 @@
 
     <header class="text-center mb-10">
         <h1 class="4xl font-extrabold text-blue-400 mb-2">C Sorting Algorithms Reference</h1>
-        <p class="text-gray-400">Step-by-step console output for Bubble, Insertion, and Selection Sort on N=10.</p>
+        <p class="text-gray-400">Step-by-step console output for Bubble, Selection, and Insertion Sort on N=10.</p>
     </header>
 
     <main class="max-w-4xl mx-auto space-y-12">
@@ -55,43 +55,85 @@
             </div>
         </div>
 
-        <!-- 1. Bubble Sort -->
+        <!-- 1. Bubble Sort (Section 1 - Unchanged) -->
         <section class="bg-gray-800 p-6 rounded-lg shadow-xl">
             <h2 class="text-2xl font-semibold mb-4 text-green-400">1. Bubble Sort (N=10)</h2>
             <div class="console">
-                <span class="console-info">--- Start Bubble Sort Process ---</span>
+                <span class="console-info">--- Start Bubble Sort Process (Detailed) ---</span>
                 <pre class="console-step">
 Initial Array: [ 73, 22, 95, 11, 6, 88, 34, 47, 51, 19 ]
 
-<span class="console-info">Pass 1: (Compares up to index 8)</span>
-  Compare (73, 22): <span class="console-highlight">SWAP!</span> -> [ 22, <span class="console-highlight">73</span>, 95, 11, 6, 88, 34, 47, 51, 19 ]
-  Compare (73, 95): No swap.
-  Compare (95, 11): <span class="console-highlight">SWAP!</span> -> [ 22, 73, 11, <span class="console-highlight">95</span>, 6, 88, 34, 47, 51, 19 ]
-  Compare (95, 6): <span class="console-highlight">SWAP!</span> -> [ 22, 73, 11, 6, <span class="console-highlight">95</span>, 88, 34, 47, 51, 19 ]
-  Compare (95, 88): <span class="console-highlight">SWAP!</span> -> [ 22, 73, 11, 6, 88, <span class="console-highlight">95</span>, 34, 47, 51, 19 ]
-  Compare (95, 34): <span class="console-highlight">SWAP!</span> -> [ 22, 73, 11, 6, 88, 34, <span class="console-highlight">95</span>, 47, 51, 19 ]
-  Compare (95, 47): <span class="console-highlight">SWAP!</span> -> [ 22, 73, 11, 6, 88, 34, 47, <span class="console-highlight">95</span>, 51, 19 ]
-  Compare (95, 51): <span class="console-highlight">SWAP!</span> -> [ 22, 73, 11, 6, 88, 34, 47, 51, <span class="console-highlight">95</span>, 19 ]
+<span class="console-info">Pass 1: (9 comparisons, places 95)</span>
+  Compare (73, 22): <span class="console-highlight">SWAP!</span> -> [ 22, 73, 95, 11, 6, 88, 34, 47, 51, 19 ]
+  Compare (73, 95): No swap. -> [ 22, 73, 95, 11, 6, 88, 34, 47, 51, 19 ]
+  Compare (95, 11): <span class="console-highlight">SWAP!</span> -> [ 22, 73, 11, 95, 6, 88, 34, 47, 51, 19 ]
+  Compare (95, 6): <span class="console-highlight">SWAP!</span> -> [ 22, 73, 11, 6, 95, 88, 34, 47, 51, 19 ]
+  Compare (95, 88): <span class="console-highlight">SWAP!</span> -> [ 22, 73, 11, 6, 88, 95, 34, 47, 51, 19 ]
+  Compare (95, 34): <span class="console-highlight">SWAP!</span> -> [ 22, 73, 11, 6, 88, 34, 95, 47, 51, 19 ]
+  Compare (95, 47): <span class="console-highlight">SWAP!</span> -> [ 22, 73, 11, 6, 88, 34, 47, 95, 51, 19 ]
+  Compare (95, 51): <span class="console-highlight">SWAP!</span> -> [ 22, 73, 11, 6, 88, 34, 47, 51, 95, 19 ]
   Compare (95, 19): <span class="console-highlight">SWAP!</span> -> [ 22, 73, 11, 6, 88, 34, 47, 51, 19, <span class="console-error">95</span> ]
   Array End Pass 1: [ 22, 73, 11, 6, 88, 34, 47, 51, 19, <span class="console-error">95</span> ]
 
-<span class="console-info">Pass 2: (Compares up to index 7)</span>
-  ... 
-  Compare (73, 88): No swap.
-  Compare (88, 34): <span class="console-highlight">SWAP!</span>
-  Compare (88, 47): <span class="console-highlight">SWAP!</span>
-  Compare (88, 51): <span class="console-highlight">SWAP!</span>
-  Compare (88, 19): <span class="console-highlight">SWAP!</span>
-  Array End Pass 2: [ 22, 11, 6, 73, 34, 47, 51, <span class="console-error">88</span>, 19, <span class="console-error">95</span> ]
+<span class="console-info">Pass 2: (8 comparisons, places 88)</span>
+  Compare (22, 73): No swap. -> [ 22, 73, 11, 6, 88, 34, 47, 51, 19, 95 ]
+  Compare (73, 11): <span class="console-highlight">SWAP!</span> -> [ 22, 11, 73, 6, 88, 34, 47, 51, 19, 95 ]
+  Compare (73, 6): <span class="console-highlight">SWAP!</span> -> [ 22, 11, 6, 73, 88, 34, 47, 51, 19, 95 ]
+  Compare (73, 88): No swap. -> [ 22, 11, 6, 73, 88, 34, 47, 51, 19, 95 ]
+  Compare (88, 34): <span class="console-highlight">SWAP!</span> -> [ 22, 11, 6, 73, 34, 88, 47, 51, 19, 95 ]
+  Compare (88, 47): <span class="console-highlight">SWAP!</span> -> [ 22, 11, 6, 73, 34, 47, 88, 51, 19, 95 ]
+  Compare (88, 51): <span class="console-highlight">SWAP!</span> -> [ 22, 11, 6, 73, 34, 47, 51, 88, 19, 95 ]
+  Compare (88, 19): <span class="console-highlight">SWAP!</span> -> [ 22, 11, 6, 73, 34, 47, 51, 19, <span class="console-error">88</span>, 95 ]
+  Array End Pass 2: [ 22, 11, 6, 73, 34, 47, 51, 19, <span class="console-error">88</span>, <span class="console-error">95</span> ]
 
-<span class="console-info">Pass 3 to 8: (Summarized for brevity)</span>
-  The largest unsorted element is bubbled to the end of the unsorted segment.
-  ...
-  Array End Pass 8: [ 6, 11, <span class="console-error">19</span>, 22, 34, 47, 51, 73, 88, 95 ]
+<span class="console-info">Pass 3: (7 comparisons, places 73)</span>
+  Compare (22, 11): <span class="console-highlight">SWAP!</span> -> [ 11, 22, 6, 73, 34, 47, 51, 19, 88, 95 ]
+  Compare (22, 6): <span class="console-highlight">SWAP!</span> -> [ 11, 6, 22, 73, 34, 47, 51, 19, 88, 95 ]
+  Compare (22, 73): No swap. -> [ 11, 6, 22, 73, 34, 47, 51, 19, 88, 95 ]
+  Compare (73, 34): <span class="console-highlight">SWAP!</span> -> [ 11, 6, 22, 34, 73, 47, 51, 19, 88, 95 ]
+  Compare (73, 47): <span class="console-highlight">SWAP!</span> -> [ 11, 6, 22, 34, 47, 73, 51, 19, 88, 95 ]
+  Compare (73, 51): <span class="console-highlight">SWAP!</span> -> [ 11, 6, 22, 34, 47, 51, 73, 19, 88, 95 ]
+  Compare (73, 19): <span class="console-highlight">SWAP!</span> -> [ 11, 6, 22, 34, 47, 51, 19, <span class="console-error">73</span>, 88, 95 ]
+  Array End Pass 3: [ 11, 6, 22, 34, 47, 51, 19, <span class="console-error">73</span>, <span class="console-error">88</span>, <span class="console-error">95</span> ]
 
-<span class="console-info">Pass 9: (Compares elements at index 0 and 1)</span>
-  Compare (6, 11): No swap.
-  Array End Pass 9: [ <span class="console-error">6</span>, <span class="console-error">11</span>, 19, 22, 34, 47, 51, 73, 88, 95 ]
+<span class="console-info">Pass 4: (6 comparisons, places 51)</span>
+  Compare (11, 6): <span class="console-highlight">SWAP!</span> -> [ 6, 11, 22, 34, 47, 51, 19, 73, 88, 95 ]
+  Compare (11, 22): No swap. -> [ 6, 11, 22, 34, 47, 51, 19, 73, 88, 95 ]
+  Compare (22, 34): No swap. -> [ 6, 11, 22, 34, 47, 51, 19, 73, 88, 95 ]
+  Compare (34, 47): No swap. -> [ 6, 11, 22, 34, 47, 51, 19, 73, 88, 95 ]
+  Compare (47, 51): No swap. -> [ 6, 11, 22, 34, 47, 51, 19, 73, 88, 95 ]
+  Compare (51, 19): <span class="console-highlight">SWAP!</span> -> [ 6, 11, 22, 34, 47, 19, <span class="console-error">51</span>, 73, 88, 95 ]
+  Array End Pass 4: [ 6, 11, 22, 34, 47, 19, <span class="console-error">51</span>, <span class="console-error">73</span>, <span class="console-error">88</span>, <span class="console-error">95</span> ]
+
+<span class="console-info">Pass 5: (5 comparisons, places 47)</span>
+  Compare (6, 11): No swap. -> [ 6, 11, 22, 34, 47, 19, 51, 73, 88, 95 ]
+  Compare (11, 22): No swap. -> [ 6, 11, 22, 34, 47, 19, 51, 73, 88, 95 ]
+  Compare (22, 34): No swap. -> [ 6, 11, 22, 34, 47, 19, 51, 73, 88, 95 ]
+  Compare (34, 47): No swap. -> [ 6, 11, 22, 34, 47, 19, 51, 73, 88, 95 ]
+  Compare (47, 19): <span class="console-highlight">SWAP!</span> -> [ 6, 11, 22, 34, 19, <span class="console-error">47</span>, 51, 73, 88, 95 ]
+  Array End Pass 5: [ 6, 11, 22, 34, 19, <span class="console-error">47</span>, <span class="console-error">51</span>, <span class="console-error">73</span>, <span class="console-error">88</span>, <span class="console-error">95</span> ]
+
+<span class="console-info">Pass 6: (4 comparisons, places 34)</span>
+  Compare (6, 11): No swap. -> [ 6, 11, 22, 34, 19, 47, 51, 73, 88, 95 ]
+  Compare (11, 22): No swap. -> [ 6, 11, 22, 34, 19, 47, 51, 73, 88, 95 ]
+  Compare (22, 34): No swap. -> [ 6, 11, 22, 34, 19, 47, 51, 73, 88, 95 ]
+  Compare (34, 19): <span class="console-highlight">SWAP!</span> -> [ 6, 11, 22, 19, <span class="console-error">34</span>, 47, 51, 73, 88, 95 ]
+  Array End Pass 6: [ 6, 11, 22, 19, <span class="console-error">34</span>, <span class="console-error">47</span>, <span class="console-error">51</span>, <span class="console-error">73</span>, <span class="console-error">88</span>, <span class="console-error">95</span> ]
+
+<span class="console-info">Pass 7: (3 comparisons, places 22)</span>
+  Compare (6, 11): No swap. -> [ 6, 11, 22, 19, 34, 47, 51, 73, 88, 95 ]
+  Compare (11, 22): No swap. -> [ 6, 11, 22, 19, 34, 47, 51, 73, 88, 95 ]
+  Compare (22, 19): <span class="console-highlight">SWAP!</span> -> [ 6, 11, 19, <span class="console-error">22</span>, 34, 47, 51, 73, 88, 95 ]
+  Array End Pass 7: [ 6, 11, 19, <span class="console-error">22</span>, <span class="console-error">34</span>, <span class="console-error">47</span>, <span class="console-error">51</span>, <span class="console-error">73</span>, <span class="console-error">88</span>, <span class="console-error">95</span> ]
+
+<span class="console-info">Pass 8: (2 comparisons, places 19)</span>
+  Compare (6, 11): No swap. -> [ 6, 11, 19, 22, 34, 47, 51, 73, 88, 95 ]
+  Compare (11, 19): No swap. -> [ 6, 11, <span class="console-error">19</span>, 22, 34, 47, 51, 73, 88, 95 ]
+  Array End Pass 8: [ 6, 11, <span class="console-error">19</span>, <span class="console-error">22</span>, <span class="console-error">34</span>, <span class="console-error">47</span>, <span class="console-error">51</span>, <span class="console-error">73</span>, <span class="console-error">88</span>, <span class="console-error">95</span> ]
+
+<span class="console-info">Pass 9: (1 comparison, places 11)</span>
+  Compare (6, 11): No swap. -> [ 6, <span class="console-error">11</span>, 19, 22, 34, 47, 51, 73, 88, 95 ]
+  Array End Pass 9: [ <span class="console-error">6</span>, <span class="console-error">11</span>, <span class="console-error">19</span>, <span class="console-error">22</span>, <span class="console-error">34</span>, <span class="console-error">47</span>, <span class="console-error">51</span>, <span class="console-error">73</span>, <span class="console-error">88</span>, <span class="console-error">95</span> ]
 
 <span class="console-info">--- Final Sorted Array (Bubble Sort) ---</span>
 Sorted Array: [ 6, 11, 19, 22, 34, 47, 51, 73, 88, 95 ]
@@ -99,142 +141,219 @@ Sorted Array: [ 6, 11, 19, 22, 34, 47, 51, 73, 88, 95 ]
             </div>
         </section>
 
-        <!-- 2. Insertion Sort -->
+        <!-- 2. Selection Sort (Section 2 - NOW WITH DETAILED COMPARISONS) -->
         <section class="bg-gray-800 p-6 rounded-lg shadow-xl">
-            <h2 class="text-2xl font-semibold mb-4 text-yellow-400">2. Insertion Sort (N=10)</h2>
-            <div class="console">
-                <span class="console-info">--- Start Insertion Sort Process ---</span>
-                
-                <pre class="console-step">
-Initial Array: [ 73, 22, 95, 11, 6, 88, 34, 47, 51, 19 ]
-
-<span class="console-info">Iteration 1 (i=1, Key=<span class="console-highlight">22</span>):</span>
-  Compare 22 < 73: SHIFT 73 right.
-  Insert Key 22 at index 0.
-  Array State: [ 22, 73, 95, 11, 6, 88, 34, 47, 51, 19 ]
-  Sorted Part: [<span class="console-error">22, 73</span>]
-
-<span class="console-info">Iteration 2 (i=2, Key=<span class="console-highlight">95</span>):</span>
-  Compare 95 < 73: False. No shifts.
-  Array State: [ 22, 73, 95, 11, 6, 88, 34, 47, 51, 19 ]
-  Sorted Part: [<span class="console-error">22, 73, 95</span>]
-
-<span class="console-info">Iteration 3 (i=3, Key=<span class="console-highlight">11</span>):</span>
-  Compare 11 < 95: SHIFT 95. Array: [ 22, 73, 95, 95, ...]
-  Compare 11 < 73: SHIFT 73. Array: [ 22, 73, 73, 95, ...]
-  Compare 11 < 22: SHIFT 22. Array: [ 22, 22, 73, 95, ...]
-  Insert Key 11 at index 0.
-  Array State: [ 11, 22, 73, 95, 6, 88, 34, 47, 51, 19 ]
-  Sorted Part: [<span class="console-error">11, 22, 73, 95</span>]
-
-<span class="console-info">Iteration 4 (i=4, Key=<span class="console-highlight">6</span>):</span>
-  Shift 95, 73, 22, 11 to the right.
-  Insert Key 6 at index 0.
-  Array State: [ 6, 11, 22, 73, 95, 88, 34, 47, 51, 19 ]
-  Sorted Part: [<span class="console-error">6, 11, 22, 73, 95</span>]
-
-<span class="console-info">Iteration 5 (i=5, Key=<span class="console-highlight">88</span>):</span>
-  Compare 88 < 95: SHIFT 95.
-  Compare 88 < 73: False. Insert 88.
-  Array State: [ 6, 11, 22, 73, 88, 95, 34, 47, 51, 19 ]
-  Sorted Part: [<span class="console-error">6, 11, 22, 73, 88, 95</span>]
-
-<span class="console-info">Iteration 6 (i=6, Key=<span class="console-highlight">34</span>):</span>
-  Shift 95, 88, 73. Insert 34.
-  Array State: [ 6, 11, 22, 34, 73, 88, 95, 47, 51, 19 ]
-
-<span class="console-info">Iteration 7 (i=7, Key=<span class="console-highlight">47</span>):</span>
-  Shift 95, 88, 73. Insert 47.
-  Array State: [ 6, 11, 22, 34, 47, 73, 88, 95, 51, 19 ]
-
-<span class="console-info">Iteration 8 (i=8, Key=<span class="console-highlight">51</span>):</span>
-  Shift 95, 88, 73. Insert 51.
-  Array State: [ 6, 11, 22, 34, 47, 51, 73, 88, 95, 19 ]
-
-<span class="console-info">Iteration 9 (i=9, Key=<span class="console-highlight">19</span>):</span>
-  Shift 95, 88, 73, 51, 47, 34, 22. Insert 19.
-  Array State: [ 6, 11, 19, 22, 34, 47, 51, 73, 88, 95 ]
-  Sorted Part: [<span class="console-error">6, 11, 19, 22, 34, 47, 51, 73, 88, 95</span>]
-
-<span class="console-info">--- Final Sorted Array (Insertion Sort) ---</span>
-Sorted Array: [ 6, 11, 19, 22, 34, 47, 51, 73, 88, 95 ]
-                </pre>
-            </div>
-        </section>
-
-        <!-- 3. Selection Sort -->
-        <section class="bg-gray-800 p-6 rounded-lg shadow-xl">
-            <h2 class="text-2xl font-semibold mb-4 text-red-400">3. Selection Sort (N=10)</h2>
+            <h2 class="text-2xl font-semibold mb-4 text-red-400">2. Selection Sort (N=10) - Detailed Comparisons</h2>
             <div class="console">
                 <span class="console-info">--- Start Selection Sort Process ---</span>
                 
                 <pre class="console-step">
 Initial Array: [ 73, 22, 95, 11, 6, 88, 34, 47, 51, 19 ]
 
-<span class="console-info">Pass 1 (i=0): Find Min in [73, 22, 95, 11, 6, 88, 34, 47, 51, 19]</span>
-  Current Min: 73 (idx 0).
-  Scan finds 6 at index 4.
-  Minimum found: 6 (idx 4).
+<span class="console-info">Pass 1 (i=0): Find Min in unsorted part [73, 22, 95, 11, 6, 88, 34, 47, 51, 19]</span>
+  Start Scan: min_element=73, min_index=0
+  Compare data[1] (22) < 73: New Min (22) at index 1.
+  Compare data[2] (95) < 22: No change.
+  Compare data[3] (11) < 22: New Min (11) at index 3.
+  Compare data[4] (6) < 11: New Min (6) at index 4.
+  Compare data[5] (88) < 6: No change.
+  Compare data[6] (34) < 6: No change.
+  Compare data[7] (47) < 6: No change.
+  Compare data[8] (51) < 6: No change.
+  Compare data[9] (19) < 6: No change.
+  End Scan. Minimum element 6 found at index 4.
   <span class="console-highlight">SWAP (data[0]=73, data[4]=6).</span>
   Array State: [ <span class="console-error">6</span>, 22, 95, 11, 73, 88, 34, 47, 51, 19 ]
 
-<span class="console-info">Pass 2 (i=1): Find Min in [22, 95, 11, 73, 88, 34, 47, 51, 19]</span>
-  Current Min: 22 (idx 1).
-  Scan finds 11 at index 3.
-  Minimum found: 11 (idx 3).
+<span class="console-info">Pass 2 (i=1): Find Min in unsorted part [22, 95, 11, 73, 88, 34, 47, 51, 19]</span>
+  Start Scan: min_element=22, min_index=1
+  Compare data[2] (95) < 22: No change.
+  Compare data[3] (11) < 22: New Min (11) at index 3.
+  Compare data[4] (73) < 11: No change.
+  Compare data[5] (88) < 11: No change.
+  Compare data[6] (34) < 11: No change.
+  Compare data[7] (47) < 11: No change.
+  Compare data[8] (51) < 11: No change.
+  Compare data[9] (19) < 11: No change.
+  End Scan. Minimum element 11 found at index 3.
   <span class="console-highlight">SWAP (data[1]=22, data[3]=11).</span>
   Array State: [ 6, <span class="console-error">11</span>, 95, 22, 73, 88, 34, 47, 51, 19 ]
 
-<span class="console-info">Pass 3 (i=2): Find Min in [95, 22, 73, 88, 34, 47, 51, 19]</span>
-  Current Min: 95 (idx 2).
-  Scan finds 19 at index 9.
-  Minimum found: 19 (idx 9).
+<span class="console-info">Pass 3 (i=2): Find Min in unsorted part [95, 22, 73, 88, 34, 47, 51, 19]</span>
+  Start Scan: min_element=95, min_index=2
+  Compare data[3] (22) < 95: New Min (22) at index 3.
+  Compare data[4] (73) < 22: No change.
+  Compare data[5] (88) < 22: No change.
+  Compare data[6] (34) < 22: No change.
+  Compare data[7] (47) < 22: No change.
+  Compare data[8] (51) < 22: No change.
+  Compare data[9] (19) < 22: New Min (19) at index 9.
+  End Scan. Minimum element 19 found at index 9.
   <span class="console-highlight">SWAP (data[2]=95, data[9]=19).</span>
   Array State: [ 6, 11, <span class="console-error">19</span>, 22, 73, 88, 34, 47, 51, 95 ]
 
-<span class="console-info">Pass 4 (i=3): Find Min in [22, 73, 88, 34, 47, 51, 95]</span>
-  Current Min: 22 (idx 3).
-  Scan: No smaller element found.
-  Minimum found: 22 (idx 3).
+<span class="console-info">Pass 4 (i=3): Find Min in unsorted part [22, 73, 88, 34, 47, 51, 95]</span>
+  Start Scan: min_element=22, min_index=3. (Scan from index 4 to 9)
+  Compare data[4] (73) < 22: No change.
+  Compare data[5] (88) < 22: No change.
+  Compare data[6] (34) < 22: No change.
+  Compare data[7] (47) < 22: No change.
+  Compare data[8] (51) < 22: No change.
+  Compare data[9] (95) < 22: No change.
+  End Scan. Minimum element 22 found at index 3.
   <span class="console-highlight">SWAP (data[3]=22, data[3]=22). (No change)</span>
   Array State: [ 6, 11, 19, <span class="console-error">22</span>, 73, 88, 34, 47, 51, 95 ]
 
-<span class="console-info">Pass 5 (i=4): Find Min in [73, 88, 34, 47, 51, 95]</span>
-  Current Min: 73 (idx 4).
-  Scan finds 34 at index 6.
-  Minimum found: 34 (idx 6).
+<span class="console-info">Pass 5 (i=4): Find Min in unsorted part [73, 88, 34, 47, 51, 95]</span>
+  Start Scan: min_element=73, min_index=4.
+  Compare data[5] (88) < 73: No change.
+  Compare data[6] (34) < 73: New Min (34) at index 6.
+  Compare data[7] (47) < 34: No change.
+  Compare data[8] (51) < 34: No change.
+  Compare data[9] (95) < 34: No change.
+  End Scan. Minimum element 34 found at index 6.
   <span class="console-highlight">SWAP (data[4]=73, data[6]=34).</span>
   Array State: [ 6, 11, 19, 22, <span class="console-error">34</span>, 88, 73, 47, 51, 95 ]
 
-<span class="console-info">Pass 6 (i=5): Find Min in [88, 73, 47, 51, 95]</span>
-  Current Min: 88 (idx 5).
-  Scan finds 47 at index 7.
-  Minimum found: 47 (idx 7).
+<span class="console-info">Pass 6 (i=5): Find Min in unsorted part [88, 73, 47, 51, 95]</span>
+  Start Scan: min_element=88, min_index=5.
+  Compare data[6] (73) < 88: New Min (73) at index 6.
+  Compare data[7] (47) < 73: New Min (47) at index 7.
+  Compare data[8] (51) < 47: No change.
+  Compare data[9] (95) < 47: No change.
+  End Scan. Minimum element 47 found at index 7.
   <span class="console-highlight">SWAP (data[5]=88, data[7]=47).</span>
   Array State: [ 6, 11, 19, 22, 34, <span class="console-error">47</span>, 73, 88, 51, 95 ]
 
-<span class="console-info">Pass 7 (i=6): Find Min in [73, 88, 51, 95]</span>
-  Current Min: 73 (idx 6).
-  Scan finds 51 at index 8.
-  Minimum found: 51 (idx 8).
+<span class="console-info">Pass 7 (i=6): Find Min in unsorted part [73, 88, 51, 95]</span>
+  Start Scan: min_element=73, min_index=6.
+  Compare data[7] (88) < 73: No change.
+  Compare data[8] (51) < 73: New Min (51) at index 8.
+  Compare data[9] (95) < 51: No change.
+  End Scan. Minimum element 51 found at index 8.
   <span class="console-highlight">SWAP (data[6]=73, data[8]=51).</span>
   Array State: [ 6, 11, 19, 22, 34, 47, <span class="console-error">51</span>, 88, 73, 95 ]
 
-<span class="console-info">Pass 8 (i=7): Find Min in [88, 73, 95]</span>
-  Current Min: 88 (idx 7).
-  Scan finds 73 at index 8.
-  Minimum found: 73 (idx 8).
+<span class="console-info">Pass 8 (i=7): Find Min in unsorted part [88, 73, 95]</span>
+  Start Scan: min_element=88, min_index=7.
+  Compare data[8] (73) < 88: New Min (73) at index 8.
+  Compare data[9] (95) < 73: No change.
+  End Scan. Minimum element 73 found at index 8.
   <span class="console-highlight">SWAP (data[7]=88, data[8]=73).</span>
   Array State: [ 6, 11, 19, 22, 34, 47, 51, <span class="console-error">73</span>, 88, 95 ]
 
-<span class="console-info">Pass 9 (i=8): Find Min in [88, 95]</span>
-  Current Min: 88 (idx 8).
-  Scan: No smaller element found.
-  Minimum found: 88 (idx 8).
+<span class="console-info">Pass 9 (i=8): Find Min in unsorted part [88, 95]</span>
+  Start Scan: min_element=88, min_index=8.
+  Compare data[9] (95) < 88: No change.
+  End Scan. Minimum element 88 found at index 8.
   <span class="console-highlight">SWAP (data[8]=88, data[8]=88). (No change)</span>
   Array State: [ 6, 11, 19, 22, 34, 47, 51, 73, <span class="console-error">88</span>, 95 ]
 
 <span class="console-info">--- Final Sorted Array (Selection Sort) ---</span>
+Sorted Array: [ 6, 11, 19, 22, 34, 47, 51, 73, 88, 95 ]
+                </pre>
+            </div>
+        </section>
+
+        <!-- 3. Insertion Sort (Section 3 - UPDATED WITH DETAILED COMPARISONS AND "PASS" NAMING) -->
+        <section class="bg-gray-800 p-6 rounded-lg shadow-xl">
+            <h2 class="text-2xl font-semibold mb-4 text-yellow-400">3. Insertion Sort (N=10) - Detailed Comparisons</h2>
+            <div class="console">
+                <span class="console-info">--- Start Insertion Sort Process ---</span>
+                
+                <pre class="console-step">
+Initial Array: [ 73, 22, 95, 11, 6, 88, 34, 47, 51, 19 ]
+// Note: Sorted part is on the left, starting with 73 (index 0).
+
+<span class="console-info">Pass 1 (i=1, Key=<span class="console-highlight">22</span>): Insert 22 into sorted part [73]</span>
+  Key: 22. Start comparison at index j=0 (value 73).
+  Compare Key (22) < Array[0] (73): <span class="console-highlight">TRUE</span>. Shift 73 right.
+  j becomes -1. Stop comparisons.
+  <span class="console-highlight">INSERT 22 at index 0.</span>
+  Array State: [ <span class="console-error">22</span>, 73, 95, 11, 6, 88, 34, 47, 51, 19 ]
+  Sorted Part: [22, 73]
+
+<span class="console-info">Pass 2 (i=2, Key=<span class="console-highlight">95</span>): Insert 95 into sorted part [22, 73]</span>
+  Key: 95. Start comparison at index j=1 (value 73).
+  Compare Key (95) < Array[1] (73): <span class="console-highlight">FALSE</span>. Stop comparisons.
+  <span class="console-highlight">INSERT 95 at index 2.</span>
+  Array State: [ 22, 73, <span class="console-error">95</span>, 11, 6, 88, 34, 47, 51, 19 ]
+  Sorted Part: [22, 73, 95]
+
+<span class="console-info">Pass 3 (i=3, Key=<span class="console-highlight">11</span>): Insert 11 into sorted part [22, 73, 95]</span>
+  Key: 11. Start comparison at index j=2 (value 95).
+  Compare Key (11) < Array[2] (95): <span class="console-highlight">TRUE</span>. Shift 95 right.
+  Compare Key (11) < Array[1] (73): <span class="console-highlight">TRUE</span>. Shift 73 right.
+  Compare Key (11) < Array[0] (22): <span class="console-highlight">TRUE</span>. Shift 22 right.
+  j becomes -1. Stop comparisons.
+  <span class="console-highlight">INSERT 11 at index 0.</span>
+  Array State: [ <span class="console-error">11</span>, 22, 73, 95, 6, 88, 34, 47, 51, 19 ]
+  Sorted Part: [11, 22, 73, 95]
+
+<span class="console-info">Pass 4 (i=4, Key=<span class="console-highlight">6</span>): Insert 6 into sorted part [11, 22, 73, 95]</span>
+  Key: 6. Start comparison at index j=3 (value 95).
+  Compare Key (6) < Array[3] (95): <span class="console-highlight">TRUE</span>. Shift 95 right.
+  Compare Key (6) < Array[2] (73): <span class="console-highlight">TRUE</span>. Shift 73 right.
+  Compare Key (6) < Array[1] (22): <span class="console-highlight">TRUE</span>. Shift 22 right.
+  Compare Key (6) < Array[0] (11): <span class="console-highlight">TRUE</span>. Shift 11 right.
+  j becomes -1. Stop comparisons.
+  <span class="console-highlight">INSERT 6 at index 0.</span>
+  Array State: [ <span class="console-error">6</span>, 11, 22, 73, 95, 88, 34, 47, 51, 19 ]
+  Sorted Part: [6, 11, 22, 73, 95]
+
+<span class="console-info">Pass 5 (i=5, Key=<span class="console-highlight">88</span>): Insert 88 into sorted part [6, 11, 22, 73, 95]</span>
+  Key: 88. Start comparison at index j=4 (value 95).
+  Compare Key (88) < Array[4] (95): <span class="console-highlight">TRUE</span>. Shift 95 right.
+  Compare Key (88) < Array[3] (73): <span class="console-highlight">FALSE</span>. Stop comparisons.
+  <span class="console-highlight">INSERT 88 at index 4.</span>
+  Array State: [ 6, 11, 22, 73, <span class="console-error">88</span>, 95, 34, 47, 51, 19 ]
+  Sorted Part: [6, 11, 22, 73, 88, 95]
+
+<span class="console-info">Pass 6 (i=6, Key=<span class="console-highlight">34</span>): Insert 34 into sorted part [6, 11, 22, 73, 88, 95]</span>
+  Key: 34. Start comparison at index j=5 (value 95).
+  Compare Key (34) < Array[5] (95): <span class="console-highlight">TRUE</span>. Shift 95 right.
+  Compare Key (34) < Array[4] (88): <span class="console-highlight">TRUE</span>. Shift 88 right.
+  Compare Key (34) < Array[3] (73): <span class="console-highlight">TRUE</span>. Shift 73 right.
+  Compare Key (34) < Array[2] (22): <span class="console-highlight">FALSE</span>. Stop comparisons.
+  <span class="console-highlight">INSERT 34 at index 3.</span>
+  Array State: [ 6, 11, 22, <span class="console-error">34</span>, 73, 88, 95, 47, 51, 19 ]
+  Sorted Part: [6, 11, 22, 34, 73, 88, 95]
+
+<span class="console-info">Pass 7 (i=7, Key=<span class="console-highlight">47</span>): Insert 47 into sorted part [6, 11, 22, 34, 73, 88, 95]</span>
+  Key: 47. Start comparison at index j=6 (value 95).
+  Compare Key (47) < Array[6] (95): <span class="console-highlight">TRUE</span>. Shift 95 right.
+  Compare Key (47) < Array[5] (88): <span class="console-highlight">TRUE</span>. Shift 88 right.
+  Compare Key (47) < Array[4] (73): <span class="console-highlight">TRUE</span>. Shift 73 right.
+  Compare Key (47) < Array[3] (34): <span class="console-highlight">FALSE</span>. Stop comparisons.
+  <span class="console-highlight">INSERT 47 at index 4.</span>
+  Array State: [ 6, 11, 22, 34, <span class="console-error">47</span>, 73, 88, 95, 51, 19 ]
+  Sorted Part: [6, 11, 22, 34, 47, 73, 88, 95]
+
+<span class="console-info">Pass 8 (i=8, Key=<span class="console-highlight">51</span>): Insert 51 into sorted part [6, 11, 22, 34, 47, 73, 88, 95]</span>
+  Key: 51. Start comparison at index j=7 (value 95).
+  Compare Key (51) < Array[7] (95): <span class="console-highlight">TRUE</span>. Shift 95 right.
+  Compare Key (51) < Array[6] (88): <span class="console-highlight">TRUE</span>. Shift 88 right.
+  Compare Key (51) < Array[5] (73): <span class="console-highlight">TRUE</span>. Shift 73 right.
+  Compare Key (51) < Array[4] (47): <span class="console-highlight">FALSE</span>. Stop comparisons.
+  <span class="console-highlight">INSERT 51 at index 5.</span>
+  Array State: [ 6, 11, 22, 34, 47, <span class="console-error">51</span>, 73, 88, 95, 19 ]
+  Sorted Part: [6, 11, 22, 34, 47, 51, 73, 88, 95]
+
+<span class="console-info">Pass 9 (i=9, Key=<span class="console-highlight">19</span>): Insert 19 into sorted part [6, 11, 22, 34, 47, 51, 73, 88, 95]</span>
+  Key: 19. Start comparison at index j=8 (value 95).
+  Compare Key (19) < Array[8] (95): <span class="console-highlight">TRUE</span>. Shift 95 right.
+  Compare Key (19) < Array[7] (88): <span class="console-highlight">TRUE</span>. Shift 88 right.
+  Compare Key (19) < Array[6] (73): <span class="console-highlight">TRUE</span>. Shift 73 right.
+  Compare Key (19) < Array[5] (51): <span class="console-highlight">TRUE</span>. Shift 51 right.
+  Compare Key (19) < Array[4] (47): <span class="console-highlight">TRUE</span>. Shift 47 right.
+  Compare Key (19) < Array[3] (34): <span class="console-highlight">TRUE</span>. Shift 34 right.
+  Compare Key (19) < Array[2] (22): <span class="console-highlight">TRUE</span>. Shift 22 right.
+  Compare Key (19) < Array[1] (11): <span class="console-highlight">FALSE</span>. Stop comparisons.
+  <span class="console-highlight">INSERT 19 at index 2.</span>
+  Array State: [ 6, 11, <span class="console-error">19</span>, 22, 34, 47, 51, 73, 88, 95 ]
+  Sorted Part: [6, 11, 19, 22, 34, 47, 51, 73, 88, 95]
+
+<span class="console-info">--- Final Sorted Array (Insertion Sort) ---</span>
 Sorted Array: [ 6, 11, 19, 22, 34, 47, 51, 73, 88, 95 ]
                 </pre>
             </div>
